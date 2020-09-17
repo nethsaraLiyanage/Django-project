@@ -32,87 +32,89 @@
 <body>
 
     <div class="container-fluid p-0 m-0 grey lighten-5">
-        <div class="row row-cols-2 p-0 m-0 pageContent" >
+        <div class="row row-cols-2 p-0 m-0 pageContent">
 
             <!--Start of SlideBar-->
             <div class="col-2 p-0 m-0" style="z-index: 0;">
                 <nav class="sidebar">
                     <div class="sideback">
-                    <div class="sidebarTop d-flex flex-row pt-4">
-                        <div class="ml-2">
-                            <img src="{% static 'img/Logo.png' %}" alt="Gaga Addara Hotel" style="width: 80px; height: 90px;">
+                        <div class="sidebarTop d-flex flex-row pt-4">
+                            <div class="ml-2">
+                                <img src="{% static 'img/Logo.png' %}" alt="Gaga Addara Hotel"
+                                    style="width: 80px; height: 90px;">
+                            </div>
+
+                            <div class="d-flex flex-column ml-2">
+                                <h3 class="pt-3" style="font-weight: bold;">Hotel</h3>
+                                <h4 style="font-weight: bold;">Gaga Addara</h4>
+                            </div>
+
                         </div>
 
-                        <div class="d-flex flex-column ml-2">
-                            <h3 class="pt-3" style="font-weight: bold;">Hotel</h3>
-                            <h4 style="font-weight: bold;">Gaga Addara</h4>
-                        </div>
+                        <ul>
+                            <li class=""
+                                style=" background-color: rgb(255, 255, 255 , 0.4); margin: 10px; border-radius: 5px;">
+                                <a href="#"> <i class="fas fa-chart-pie mr-3"> </i> Dashboard</a>
 
-                    </div>
 
-                    <ul>
-                        <li class="" style=" background-color: rgb(255, 255, 255 , 0.4); margin: 10px; border-radius: 5px;">
-                            <a href="#"> <i class="fas fa-chart-pie mr-3"> </i>  Dashboard</a>
-                            
-                            
-                        </li>
+                            </li>
 
-                        <li><a class="dropBtn2" href="#"><i class="fas fa-box mr-3"></i>Packages<span
-                                    class="fas fa-sort-down secound-sp"></span></a>
-                            <ul class="dropCont2">
-                                <li><a href="">View Employees</a></li>
-                                <li><a href="">Add Employee</a></li>
-                            </ul>
-                        </li>
+                            <li><a class="dropBtn2" href="#"><i class="fas fa-box mr-3"></i>Packages<span
+                                        class="fas fa-sort-down secound-sp"></span></a>
+                                <ul class="dropCont2">
+                                    <li><a href="">View Employees</a></li>
+                                    <li><a href="">Add Employee</a></li>
+                                </ul>
+                            </li>
 
-                        <li><a class="dropbtnRooms" href="#"><i class="fas fa-bed mr-3"></i>Rooms<span
-                                    class="fas fa-sort-down rooms-sp"></span></a>
-                            <ul class="dropContRooms">
-                                <li><a href="">View Employees</a></li>
-                                <li><a href="">Add Employee</a></li>
-                            </ul>
-                        </li>
+                            <li><a class="dropbtnRooms" href="#"><i class="fas fa-bed mr-3"></i>Rooms<span
+                                        class="fas fa-sort-down rooms-sp"></span></a>
+                                <ul class="dropContRooms">
+                                    <li><a href="">View Employees</a></li>
+                                    <li><a href="">Add Employee</a></li>
+                                </ul>
+                            </li>
 
-                        <li><a class="dropbtnHalls" href="#"><i class="fas fa-hotel mr-3"></i>Reception Halls<span
-                                    class="fas fa-sort-down Halls-sp"></span></a>
-                            <ul class="dropContHalls">
-                                <li><a href="">View Employees</a></li>
-                                <li><a href="">Add Employee</a></li>
-                            </ul>
-                        </li>
+                            <li><a class="dropbtnHalls" href="#"><i class="fas fa-hotel mr-3"></i>Reception Halls<span
+                                        class="fas fa-sort-down Halls-sp"></span></a>
+                                <ul class="dropContHalls">
+                                    <li><a href="">View Employees</a></li>
+                                    <li><a href="">Add Employee</a></li>
+                                </ul>
+                            </li>
 
-                        <li><a class="dropBtnMenu" href="#"><i class="fas fa-concierge-bell mr-3"></i>Food Menu<span
-                                    class="fas fa-sort-down Menu-sp"></span></a>
-                            <ul class="dropContMenu">
-                                <li><a href="">View Employees</a></li>
-                                <li><a href="">Add Employee</a></li>
-                            </ul>
-                        </li>
+                            <li><a class="dropBtnMenu" href="#"><i class="fas fa-concierge-bell mr-3"></i>Food Menu<span
+                                        class="fas fa-sort-down Menu-sp"></span></a>
+                                <ul class="dropContMenu">
+                                    <li><a href="">View Employees</a></li>
+                                    <li><a href="">Add Employee</a></li>
+                                </ul>
+                            </li>
 
-                        <li>
-                            <a class="dropBtn1" href="#"><i class="fas fa-users mr-3"></i>Employees <span
-                                    class="fas fa-sort-down first-sp"></span></a>
-                            <ul class="dropCont1">
-                                <li><a href="">View Employees</a></li>
-                                <li><a href="">Add Employee</a></li>
-                            </ul>
-                        </li>
+                            <li>
+                                <a class="dropBtn1" href="#"><i class="fas fa-users mr-3"></i>Employees <span
+                                        class="fas fa-sort-down first-sp"></span></a>
+                                <ul class="dropCont1">
+                                    <li><a href="">View Employees</a></li>
+                                    <li><a href="">Add Employee</a></li>
+                                </ul>
+                            </li>
 
-                        <li><a class="dropBtnReport" href="#"><i class="fas fa-clipboard-list mr-3"></i>Food Report<span
-                                    class="fas fa-sort-down Report-sp"></span></a>
-                            <ul class="dropContReport">
-                                <li><a href="">View Employees</a></li>
-                                <li><a href="">Add Employee</a></li>
-                            </ul>
-                        </li>
-                        
+                            <li><a class="dropBtnReport" href="#"><i class="fas fa-clipboard-list mr-3"></i>Food
+                                    Report<span class="fas fa-sort-down Report-sp"></span></a>
+                                <ul class="dropContReport">
+                                    <li><a href="/foodreport">Add new Food</a></li>
+                                    <li><a href="foodprofit">View Sales Report</a></li>
+                                </ul>
+                            </li>
 
-                        <li><a href=""><i class="fas fa-star-half-alt mr-3"></i>Feedback</a></li>
-                        <li><a href=""><i class="far fa-id-card mr-3"></i>Contact Us</a></li>
+
+                            <li><a href=""><i class="fas fa-star-half-alt mr-3"></i>Feedback</a></li>
+                            <li><a href=""><i class="far fa-id-card mr-3"></i>Contact Us</a></li>
 
 
 
-                    </ul>
+                        </ul>
                     </div>
                 </nav>
             </div>
@@ -124,21 +126,22 @@
                 <!--#ff4444-->
                 <nav class="navbar-expand-lg  pl-4 p-0 d-flex justify-content-between"
                     style="background-color: rgba(250, 68, 68 , 0.9); height: 70px;">
-                    
-                    <h1 class="navbar-brand mt-2" style="font-weight: bold; font-size: 30px;" ><i class="fas fa-user-plus mr-3"></i>ADD EMPLOYEE</h1>
-                    
+
+                    <h1 class="navbar-brand mt-2" style="font-weight: bold; font-size: 30px;"><i
+                            class="fas fa-user-plus mr-3"></i>ADD EMPLOYEE</h1>
+
                     <div class="mr-5">
-                        
+
 
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item mt-1">
                                 <a class="nav-link waves-effect waves-light">
-                                   <i class="fas fa-bell fa-2x mt-2 mr-3"></i>
+                                    <i class="fas fa-bell fa-2x mt-2 mr-3"></i>
                                 </a>
                             </li>
                             <li class="nav-item mt-1">
                                 <a class="nav-link waves-effect waves-light">
-                                   <i class="fas fa-envelope fa-2x mt-2 mr-3"></i>
+                                    <i class="fas fa-envelope fa-2x mt-2 mr-3"></i>
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -155,108 +158,111 @@
                                             class="img-fluid z-depth-1 rounded m-3" alt="Responsive image"
                                             style="width: 70px; height: 70px;">
 
-                                            <div class="d-flex flex-column">
-                                                <p class="m-0 p-0">Name</p>
-                                                mane15488@gmail.com
-                                            </div>
+                                        <div class="d-flex flex-column">
+                                            <p class="m-0 p-0">Name</p>
+                                            mane15488@gmail.com
+                                        </div>
                                     </div>
-                                    <a class="dropdown-item mt-0 mb-0 pt-0 pb-0" href="#"><i class="far fa-user-circle mr-3"></i>My Profile</a>
-                                    <a class="dropdown-item mt-0 mb-0 pt-0 pb-0" href="#"> <i class="fas fa-sign-out-alt mr-3"></i>Log
+                                    <a class="dropdown-item mt-0 mb-0 pt-0 pb-0" href="#"><i
+                                            class="far fa-user-circle mr-3"></i>My Profile</a>
+                                    <a class="dropdown-item mt-0 mb-0 pt-0 pb-0" href="#"> <i
+                                            class="fas fa-sign-out-alt mr-3"></i>Log
                                         Out</a>
                                 </div>
                             </li>
                         </ul>
-                            
-                            
+
+
                     </div>
 
                 </nav>
 
-            <!--Middle part-->
+                <!--Middle part-->
 
                 <div class="contentFood">
-                    <div class="controw2 row" >
+                    <div class="controw2 row">
                         <div class="col-11 table-card" style="margin-left: 30px;">
 
                             <h3>MONTHLY REPORT</h3>
                             <table class="table" style="margin-top: 20px;">
                                 <thead class="thead-dark">
                                     <tr>
-                                      <th scope="col">Food No</th>
-                                      <th scope="col">Food Name</th>
-                                      <th scope="col">Week 01</th>
-                                      <th scope="col">Week 02</th>
-                                      <th scope="col">Week 03</th>
-                                      <th scope="col">Week 04</th>
-                                      <th scope="col">Week 05</th>
+                                        <th scope="col">Food No</th>
+                                        <th scope="col">Food Name</th>
+                                        <th scope="col">Week 01</th>
+                                        <th scope="col">Week 02</th>
+                                        <th scope="col">Week 03</th>
+                                        <th scope="col">Week 04</th>
+                                        <th scope="col">Week 05</th>
                                     </tr>
-                                  </thead>
+                                </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>Date</td>
-                                    <td>Otto</td>
-                                    <td>Date</td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                    <td>Otto</td>
-                                  </tr>
+                                    <tr>
+                                        <td>Date</td>
+                                        <td>Otto</td>
+                                        <td>Date</td>
+                                        <td>Otto</td>
+                                        <td>Otto</td>
+                                        <td>Otto</td>
+                                        <td>Otto</td>
+                                    </tr>
                                 </tbody>
-                              </table>
+                            </table>
                         </div>
                     </div>
 
-                    <div class="controw3 row" >
+                    <div class="controw3 row">
                         <div class="col-9 table-card" style="margin-left: 30px; margin-top: 40px;">
 
                             <h3>PROFITABILITY</h3>
                             <table class="table" style="margin-top: 20px;">
                                 <tbody>
                                     <tr>
-                                      <td>Total Sales</td>
-                                      <td>Otto</td>
+                                        <td>Total Sales</td>
+                                        <td>Otto</td>
                                     </tr>
                                     <tr>
-                                      <td>Food</td>
-                                      <td>Thornton</td>
+                                        <td>Food</td>
+                                        <td>Thornton</td>
                                     </tr>
                                     <tr>
-                                      <td>Beverages</td>
-                                      <td>the Bird</td>
+                                        <td>Beverages</td>
+                                        <td>the Bird</td>
                                     </tr>
-                                  </tbody>
+                                </tbody>
                             </table>
 
                         </div>
                     </div>
 
-                    <div class="controw3 row" >
+                    <div class="controw3 row">
                         <div class="col-6 table-card" style="margin-left: 30px; margin-top: 10px;">
                             <table class="table" style="margin-top: 50px;">
                                 <tbody>
                                     <tr>
-                                      <td>Gross Profit</td>
-                                      <td>Otto</td>
+                                        <td>Gross Profit</td>
+                                        <td>Otto</td>
                                     </tr>
                                     <tr>
-                                      <td>Total Cost</td>
-                                      <td>Thornton</td>
+                                        <td>Total Cost</td>
+                                        <td>Thornton</td>
                                     </tr>
                                     <tr>
-                                      <td>Estimated Profit</td>
-                                      <td>the Bird</td>
+                                        <td>Estimated Profit</td>
+                                        <td>the Bird</td>
                                     </tr>
-                                  </tbody>
+                                </tbody>
                             </table>
                         </div>
                         <div>
-                            <img style="width: 300px; height: 300px; margin-top: 30px; margin-left: 100px;" src="{% static 'img/bar.jpg' %}"  alt="">
+                            <img style="width: 300px; height: 300px; margin-top: 30px; margin-left: 100px;"
+                                src="{% static 'img/bar.jpg' %}" alt="">
                         </div>
                     </div>
                 </div>
-                
 
-            <!--Middle part-->
+
+                <!--Middle part-->
 
                 <!-- Footer -->
                 <footer class="page-footer font-small text-light">
@@ -363,13 +369,17 @@
                             <h6 class="text-uppercase font-weight-bold">Contact</h6>
                             <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                             <p>
-                                <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                                <i class="fas fa-home mr-3"></i> New York, NY 10012, US
+                            </p>
                             <p>
-                                <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+                                <i class="fas fa-envelope mr-3"></i> info@example.com
+                            </p>
                             <p>
-                                <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                                <i class="fas fa-phone mr-3"></i> + 01 234 567 88
+                            </p>
                             <p>
-                                <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                                <i class="fas fa-print mr-3"></i> + 01 234 567 89
+                            </p>
 
                         </div>
                         <!-- Grid column -->
@@ -388,24 +398,24 @@
 
                 </footer>
                 <!-- Footer -->
-                </div>
-
-
             </div>
-            <!--End of Content Area-->
-
 
 
         </div>
+        <!--End of Content Area-->
 
-        
+
 
     </div>
 
 
 
-    
-    
+    </div>
+
+
+
+
+
 
 
 

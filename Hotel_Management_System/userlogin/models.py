@@ -119,10 +119,10 @@ class foodItem(models.Model):
     foodItemId = models.CharField(max_length=10,primary_key=True)
     date = models.DateTimeField(auto_now=True,auto_now_add=False)
     dishName = models.CharField(max_length=100)
-    salesPrice = models.FloatField()
-    totalCost = models.FloatField()
-    costMargin = models.FloatField()
-    netProfit = models.FloatField()
+    salesPrice = models.FloatField(null=True)
+    totalCost = models.FloatField(null=True)
+    costMargin = models.FloatField(null=True)
+    netProfit = models.FloatField(null=True)
 
     def __str__(self):
         return self.foodItemId

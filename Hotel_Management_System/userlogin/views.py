@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Customer , Admin , Employee
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Customer, Admin, Employee
 from .models import generateRandomeNum
 from .models import foodItem, utilCost, ingrediants
 from django.contrib.auth.models import auth
@@ -9,8 +9,10 @@ from random import randint
 from .forms import custmoneForm
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.contrib import messages
 
-#random num gen
+# random num gen
+
 
 def random_with_N_digits(n):
     range_start = 10**(n-1)
@@ -19,13 +21,14 @@ def random_with_N_digits(n):
 
 # Create your views here.
 
+
 def home(request):
     return render(request, 'index.html')
 
 
 def login(request):
     return render(request, 'login.html')
-    
+
 
 def signUp(request):
     return render(request, 'Signup.html')
@@ -61,18 +64,22 @@ def employeerepo(request):
 
 def foodreport(request):
     return render(request, 'FoodReport.html')
-    
+
+
 def foodprofit(request):
     return render(request, 'FoodProfitability.html')
+
 
 def myprofile(request):
     print("sesseionvalue : " + request.session['userid'])
     cus1 = Customer.objects.get(cusid=request.session['userid'])
-    return render(request, 'User_profile.html' , {'customer' : cus1} )
+    return render(request, 'User_profile.html', {'customer': cus1})
 
 # login function
+
+
 def vertifyLogin(request):
-    
+
     Email = request.POST['loginEmail']
     Password = request.POST['loginPw']
 
@@ -86,7 +93,7 @@ def vertifyLogin(request):
         if customer.password == Password:
             request.session['userid'] = customer.cusid
             print("Customer valid")
-            return render(request, 'index.html', {'userid': customer.cusid , 'userEmail' : customer.email})
+            return render(request, 'index.html', {'userid': customer.cusid, 'userEmail': customer.email})
         else:
             request.session['userid'] = None
             return redirect('login')
@@ -101,28 +108,21 @@ def vertifyLogin(request):
             else:
                 request.session['userid'] = None
                 return redirect('login')
-    
 
-
-
-
-   
-
-            
     #     admin = auth.authenticate(adminid=Email, password = Password)
     #     print("add checked")
     #     if admin is not None:
     #     auth.login(request, admin)
-        
 
     # print("function skiped")
     # return render(request, 'login.html')
 
 # Signup function
+
+
 def signUpVer(request):
 
-    rand = generateRandomeNum() 
-
+    rand = generateRandomeNum()
 
     custId = "CUS" + rand.fiveNums()
     print("custId" + custId)
@@ -149,11 +149,9 @@ def signUpVer(request):
         return render(request, 'index.html')
 
 
+def updateCus(request, id_cus):
 
-
-def updateCus(request , id_cus):
-    
-    cus = Customer.objects.get(cus_index = id_cus)
+    cus = Customer.objects.get(cus_index=id_cus)
     print(id_cus)
     cus.email = request.POST['Edit_Email']
     cus.cusnic = request.POST['Edit_Nic']
@@ -167,14 +165,11 @@ def updateCus(request , id_cus):
     print(uploaded_File.name)
     print(uploaded_File.size)
     fs = FileSystemStorage()
-    fs.save(uploaded_File.name , uploaded_File)
-
-
+    fs.save(uploaded_File.name, uploaded_File)
 
     cus.save()
     cus = Customer.objects.get(cusid=request.session['userid'])
     return render(request, 'User_profile.html', {'customer': cus, 'media_url': settings.MEDIA_URL})
-
 
 
 def adduser(request):
@@ -209,9 +204,6 @@ def adduser(request):
     return render(request, 'EmployeeList.html', {'employees': emp})
 
 
-
-
-
 def fullemployee(request, id_emp):
     emp = Employee.objects.get(emp_index=id_emp)
     return render(request, 'ViewEmployee.html', {'employee': emp})
@@ -241,6 +233,7 @@ def editemp(request):
                         ot_rate=addempOTRate)
 
     return render(request, 'ViewEmployee.html', {'employee': employee})
+
 
 def saveFoodItem(request):
     date = request.POST['date']
@@ -277,72 +270,73 @@ def saveFoodItem(request):
     foodId = random_with_N_digits(9)
 
     fooditrm = foodItem(
-        foodItemId = foodId,
-        date = date,
-        dishName = dishName,
-        salesPrice = sprice,
-        totalCost = totcost,
-        costMargin = costmarg,
-        netProfit = netprof
+        foodItemId=foodId,
+        date=date,
+        dishName=dishName,
+        salesPrice=sprice,
+        totalCost=totcost,
+        costMargin=costmarg,
+        netProfit=netprof
     )
 
     fooditrm.save()
 
     ingrid1 = ingrediants(
-        ingId = ing1id,
-        foodId = foodId,
-        ingName = ing1name,
-        qty = ing1qty,
-        cost = ing1cost
+        ingId=ing1id,
+        foodId=fooditrm,
+        ingName=ing1name,
+        qty=ing1qty,
+        cost=ing1cost
     )
     ingrid1.save()
 
     ingrid2 = ingrediants(
-        ingId = ing2id,
-        foodId = foodId,
-        ingName = ing2name,
-        qty = ing2qty,
-        cost = ing2cost
+        ingId=ing2id,
+        foodId=fooditrm,
+        ingName=ing2name,
+        qty=ing2qty,
+        cost=ing2cost
     )
     ingrid2.save()
 
     ingrid3 = ingrediants(
-        ingId = ing3id,
-        foodId = foodId,
-        ingName = ing3name,
-        qty = ing3qty,
-        cost = ing3cost
+        ingId=ing3id,
+        foodId=fooditrm,
+        ingName=ing3name,
+        qty=ing3qty,
+        cost=ing3cost
     )
     ingrid3.save()
 
     ingrid4 = ingrediants(
-        ingId = ing4id,
-        foodId = foodId,
-        ingName = ing4name,
-        qty = ing4qty,
-        cost = ing4cost
+        ingId=ing4id,
+        foodId=fooditrm,
+        ingName=ing4name,
+        qty=ing4qty,
+        cost=ing4cost
     )
     ingrid4.save()
 
     ingrid5 = ingrediants(
-        ingId = ing5id,
-        foodId = foodId,
-        ingName = ing5name,
-        qty = ing5qty,
-        cost = ing5cost
+        ingId=ing5id,
+        foodId=fooditrm,
+        ingName=ing5name,
+        qty=ing5qty,
+        cost=ing5cost
     )
     ingrid5.save()
 
     utilct = utilCost(
-        utilId = random_with_N_digits(9),
-        foodId = foodId,
-        preparations = prep,
-        gas = gas,
-        elec = elec,
-        water = water,
-        total = totcost
+        utilId=random_with_N_digits(9),
+        foodId=fooditrm,
+        preparations=prep,
+        gas=gas,
+        elec=elec,
+        water=water,
+        total=totcost
     )
     utilct.save()
 
-    return render(request,"FoodProfitability.html")
-
+    messages.info(
+        request, 'Congratulations!! Your Food Item has been saved in to the database😊😊😊😊')
+    return HttpResponseRedirect('/foodreport')
