@@ -1,0 +1,13 @@
+.contentFood{
+    background-color: white;
+    margin: 40px;
+    padding: 30px;
+}
+.tableRow{
+    display: flex;
+}
+.imgFood{
+    width: 700px;
+    height: 300px;
+    margin-left: 20px;
+}
