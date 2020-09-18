@@ -273,7 +273,7 @@ def saveFoodItem(request):
         foodItemId=foodId,
         fday=(date[0:2]),
         fmonth=(date[3:5]),
-        fyear = (date[6:10]),
+        fyear=(date[6:10]),
         dishName=dishName,
         salesPrice=sprice,
         totalCost=totcost,
@@ -342,3 +342,26 @@ def saveFoodItem(request):
     messages.info(
         request, 'Congratulations!! Your Food Item has been saved in to the database😊😊😊😊')
     return HttpResponseRedirect('/foodreport')
+
+
+def getFoodData(request, pk):
+    print(pk)
+    data = foodItem.objects.all().filter(fmonth=pk)
+    if data.exists():
+        totalSales = 0.0
+        grossProfit = 0.0
+        totCost = 0.0
+        estimatedProf = 0.0
+        for item in data:
+            totalSales = totalSales + item.salesPrice
+            grossProfit = grossProfit + item.netProfit
+            totCost = totCost + item.totalCost
+
+        print(data)
+
+        return render(request, 'FoodProfitability.html', {'foodData': data, 'totalSales': totalSales, 'grossProfit': grossProfit, 'totCost': totCost})
+
+    else:
+        messages.info(
+            request, 'No records in the month😢😭')
+    return HttpResponseRedirect('/foodprofit')

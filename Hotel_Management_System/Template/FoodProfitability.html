@@ -29,7 +29,7 @@
     <title>Dashboard</title>
 </head>
 
-<body>
+<body onload="getDate()">
 
     <div class="container-fluid p-0 m-0 grey lighten-5">
         <div class="row row-cols-2 p-0 m-0 pageContent">
@@ -183,82 +183,90 @@
                     <div class="controw2 row">
                         <div class="col-11 table-card" style="margin-left: 30px;">
 
-                            <h3>MONTHLY REPORT</h3>
+
+                            <div style="display: flex;">
+                                <h3>MONTHLY REPORT</h3>
+                                <select style="  margin-left: 100px;width: 150px;"
+                                    class="custom-select custom-select-sm mb-3" id="month" onchange="fetchData()">
+                                    <option selected>Select Month</option>
+                                </select>
+                            </div>
                             <table class="table" style="margin-top: 20px;">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Food No</th>
                                         <th scope="col">Food Name</th>
-                                        <th scope="col">Week 01</th>
-                                        <th scope="col">Week 02</th>
-                                        <th scope="col">Week 03</th>
-                                        <th scope="col">Week 04</th>
-                                        <th scope="col">Week 05</th>
+                                        <th scope="col">Order Date</th>
+                                        <th scope="col">Sold Price</th>
+                                        <th scope="col">Cost</th>
+                                        <th scope="col">Discount Given - %</th>
+                                        <th scope="col">Profit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    {% for item in foodData%}
                                     <tr>
-                                        <td>Date</td>
-                                        <td>Otto</td>
-                                        <td>Date</td>
-                                        <td>Otto</td>
-                                        <td>Otto</td>
-                                        <td>Otto</td>
-                                        <td>Otto</td>
+                                        <td>{{item.foodItemId}}</td>
+                                        <td>{{item.dishName}}</td>
+                                        <td>{{item.fday}} / {{item.fmonth}} / {{item.fyear}}</td>
+                                        <td>{{item.salesPrice}}</td>
+                                        <td>{{item.totalCost}}</td>
+                                        <td>{{item.costMargin}}</td>
+                                        <td>{{item.netProfit}}</td>
+
+
                                     </tr>
+                                    {%endfor%}
+
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <tr>
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>OOPSS!!!!</strong> {{ message }}
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="controw3 row">
-                        <div class="col-9 table-card" style="margin-left: 30px; margin-top: 40px;">
+                        <div class="col-12 table-card" style="margin-left: 30px; margin-top: 40px;display: flex;;">
 
-                            <h3>PROFITABILITY</h3>
-                            <table class="table" style="margin-top: 20px;">
-                                <tbody>
-                                    <tr>
-                                        <td>Total Sales</td>
-                                        <td>Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Food</td>
-                                        <td>Thornton</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Beverages</td>
-                                        <td>the Bird</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div style="flex-grow: 1">
+                                <h3>PROFITABILITY</h3>
+                                <table class="table" style="margin-top: 20px;">
+                                    <tbody>
+                                        <tr>
+                                            <td>Total Sales</td>
+                                            <td>{{totalSales}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gross Profit</td>
+                                            <td>{{grossProfit}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Cost</td>
+                                            <td>{{totCost}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div style="flex-grow: 1;padding-left: 100px;">
+                                <canvas id="pieChart"></canvas>
+                            </div>
 
                         </div>
                     </div>
 
-                    <div class="controw3 row">
-                        <div class="col-6 table-card" style="margin-left: 30px; margin-top: 10px;">
-                            <table class="table" style="margin-top: 50px;">
-                                <tbody>
-                                    <tr>
-                                        <td>Gross Profit</td>
-                                        <td>Otto</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total Cost</td>
-                                        <td>Thornton</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Estimated Profit</td>
-                                        <td>the Bird</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <img style="width: 300px; height: 300px; margin-top: 30px; margin-left: 100px;"
-                                src="{% static 'img/bar.jpg' %}" alt="">
-                        </div>
-                    </div>
                 </div>
 
 
@@ -440,6 +448,54 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <!--User Js-->
     <script src="{% static 'js/Dashboard.js' %}"></script>
+
+    <script>
+        function getDate() {
+
+            dateObj = new Date();
+            month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            day = String(dateObj.getDate()).padStart(2, '0');
+            year = dateObj.getFullYear();
+            output = day + '/' + month + '/' + year;
+
+
+            select = document.getElementById('month');
+            for (i = 1; i <= parseInt(month); i++) {
+                var option = document.createElement('option');
+                if (i < 10) {
+                    i = "0" + i;
+                    option.innerHTML = i
+                }
+                select.add(option);
+            }
+
+
+        }
+
+        function fetchData() {
+            selectedVal = document.getElementById('month').value;
+            window.location.href = "/getFoodData/" + selectedVal;
+        }
+    </script>
+
+    <script>
+        //pie
+        var ctxP = document.getElementById("pieChart").getContext('2d');
+        var myPieChart = new Chart(ctxP, {
+        type: 'pie',
+        data: {
+        labels: ["Gross Profit", "Total Cost", "Total Sales"],
+        datasets: [{
+        data: [{{grossProfit}},{{totCost}},{{totalSales}}],
+        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C"],
+        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+        }]
+        },
+        options: {
+        responsive: true
+        }
+        });
+    </script>
 
 
 </body>

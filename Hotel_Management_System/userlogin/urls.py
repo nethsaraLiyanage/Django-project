@@ -22,5 +22,6 @@ urlpatterns = [
     path("fullemployee/employeerepo", views.employeerepo, name="employeerepo"),
     path("foodreport", views.foodreport, name="foodreport"),
     path("foodprofit", views.foodprofit, name="foodprofit"),
-    path("saveFoodItem", views.saveFoodItem, name="saveFoodItem")
+    path("saveFoodItem", views.saveFoodItem, name="saveFoodItem"),
+    path('getFoodData/<str:pk>', views.getFoodData, name="getFoodData")
 ]
