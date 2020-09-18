@@ -271,7 +271,9 @@ def saveFoodItem(request):
 
     fooditrm = foodItem(
         foodItemId=foodId,
-        date=date,
+        fday=(date[0:2]),
+        fmonth=(date[3:5]),
+        fyear = (date[6:10]),
         dishName=dishName,
         salesPrice=sprice,
         totalCost=totcost,

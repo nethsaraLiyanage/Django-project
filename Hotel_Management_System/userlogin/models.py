@@ -90,7 +90,7 @@ class Customer(models.Model):
     address_l2 = models.CharField(
         db_column='address_L2', max_length=30, blank=True, null=True)
     postcode = models.IntegerField(blank=True, null=True)
-    img = models.ImageField(default = 'python.png' , null = True , blank = True)
+    img = models.ImageField(default='python.png', null=True, blank=True)
     # Field name made lowercase.
     email = models.CharField(
         db_column='Email', max_length=150, blank=True, null=True)
@@ -104,9 +104,9 @@ class Customer(models.Model):
 
 
 class generateRandomeNum:
-   
+
     def fiveNums(self):
-        num = random.randrange(1 , (10**5)-1)
+        num = random.randrange(1, (10**5)-1)
         addZeros = '{:04}'.format(num)
         return addZeros
         # num = random.randint(0 , 99999)
@@ -115,9 +115,12 @@ class generateRandomeNum:
 
 # Create your models here.
 
+
 class foodItem(models.Model):
-    foodItemId = models.CharField(max_length=10,primary_key=True)
-    date = models.DateTimeField(auto_now=True,auto_now_add=False)
+    foodItemId = models.CharField(max_length=10, primary_key=True)
+    fday = models.CharField(max_length=5, null=True)
+    fmonth = models.CharField(max_length=5, null=True)
+    fyear = models.CharField(max_length=5, null=True)
     dishName = models.CharField(max_length=100)
     salesPrice = models.FloatField(null=True)
     totalCost = models.FloatField(null=True)
@@ -127,9 +130,10 @@ class foodItem(models.Model):
     def __str__(self):
         return self.foodItemId
 
+
 class ingrediants(models.Model):
-    ingId = models.CharField(max_length=10,primary_key=True)
-    foodId = models.ForeignKey(foodItem,on_delete=models.CASCADE)
+    ingId = models.CharField(max_length=10, primary_key=True)
+    foodId = models.ForeignKey(foodItem, on_delete=models.CASCADE)
     ingName = models.CharField(max_length=50)
     qty = models.FloatField()
     cost = models.FloatField()
@@ -137,9 +141,10 @@ class ingrediants(models.Model):
     def __str__(self):
         return self.ingId
 
+
 class utilCost(models.Model):
-    utilId = models.CharField(max_length=10,primary_key=True)
-    foodId = models.OneToOneField(foodItem,on_delete=models.CASCADE)
+    utilId = models.CharField(max_length=10, primary_key=True)
+    foodId = models.OneToOneField(foodItem, on_delete=models.CASCADE)
     preparations = models.FloatField()
     gas = models.FloatField()
     elec = models.FloatField()
@@ -148,7 +153,3 @@ class utilCost(models.Model):
 
     def __str__(self):
         return self.utilId
-
-    
-
-
